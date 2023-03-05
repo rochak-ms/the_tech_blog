@@ -9,7 +9,7 @@ const editFormHandler = async function (event) {
     method: "PUT",
     body: JSON.stringify({
       title,
-      body,
+      content: body,
     }),
     headers: { "Content-Type": "application/json" },
   });
@@ -26,6 +26,10 @@ const deletePostHandler = async function () {
   });
   document.location.replace("/dashboard");
 };
+
+document
+  .querySelector("#post-form")
+  .addEventListener("submit", editFormHandler);
 
 document
   .querySelector("#delete-btn")
