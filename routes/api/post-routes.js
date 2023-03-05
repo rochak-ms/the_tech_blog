@@ -19,56 +19,40 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-router.put("/:id", withAuth, (req, res) => {
-  // console.log(req.body, req.params.id);
-  // Post.update(req.body, {
-  //   where: {
-  //     id: req.params.id,
-  //   },
-  // })
-  //   .then((affectedRows) => {
-  //     if (affectedRows > 0) {
-  //       res.status(200).end();
-  //     } else {
-  //       res.status(404).end();
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     res.status(500).json(err);
-  //   });
+router.put("/:id", withAuth, async (req, res) => {
   console.log(req.body);
   try {
     const [affectedRows] = await Post.update(req.body, {
       where: {
-        id: req.params.id
+        id: req.params.id,
       },
-  });
-  if (affectedRows > 0) {
-    res.status(200).end();
-  } else {
-    res.status(404).end();
-  }
-  } catch(err) {
+    });
+    if (affectedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.delete("/:id", withAuth, async(req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const [affectedRows] = Post.destroy({
       where: {
-        id: req.params.id
+        id: req.params.id,
       },
     });
 
     if (affectedRows > 0) {
-        res.status(200).end();
-      } else {
-        res.status(404).end();
+      res.status(200).end();
+    } else {
+      res.status(404).end();
     }
-    } catch(err) {
-      res.status(500).json(err);
-    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
