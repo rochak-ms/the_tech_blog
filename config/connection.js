@@ -22,6 +22,4 @@ if (process.env.JAWSDB_URL) {
   );
 }
 
-const PORT = process.env.PORT || 3001;
-
 module.exports = sequelize;
