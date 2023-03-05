@@ -1,4 +1,4 @@
-const postID = document.getElementById("post-id").value;
+const postId = document.getElementById("post-id").value;
 const editFormHandler = async function (event) {
   event.preventDefault();
 
